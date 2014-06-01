@@ -1,0 +1,91 @@
+<div class="page-header">
+  <h1>Add Course</h1>
+</div>
+
+<% if @course.errors.any? %>
+  <% @course.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<form action="/create_course" class="form-horizontal">
+  <!-- Label and input for name -->
+  <div class="form-group">
+    <label for="name" class="col-sm-2 control-label">
+      Name
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @course.name %>">
+    </div>
+  </div>
+
+  <!-- Label and input for instructor -->
+  <div class="form-group">
+    <label for="instructor" class="col-sm-2 control-label">
+      Instructor
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="instructor" name="instructor" placeholder="Instructor" class="form-control" value="<%= @course.instructor %>">
+    </div>
+  </div>
+
+  <!-- Label and input for calendar_id -->
+  <div class="form-group">
+    <label for="calendar_id" class="col-sm-2 control-label">
+      Calendar
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="calendar_id" name="calendar_id" placeholder="Calendar" class="form-control" value="<%= @course.calendar_id %>">
+    </div>
+  </div>
+
+  <!-- Label and input for quarter_id -->
+  <div class="form-group">
+    <label for="quarter_id" class="col-sm-2 control-label">
+      Quarter
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="quarter_id" name="quarter_id" placeholder="Quarter" class="form-control" value="<%= @course.quarter_id %>">
+    </div>
+  </div>
+
+  <!-- Label and input for department_id -->
+  <div class="form-group">
+    <label for="department_id" class="col-sm-2 control-label">
+      Department
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="department_id" name="department_id" placeholder="Department" class="form-control" value="<%= @course.department_id %>">
+    </div>
+  </div>
+
+  <!-- Label and input for team_size -->
+  <div class="form-group">
+    <label for="team_size" class="col-sm-2 control-label">
+      Team size
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="team_size" name="team_size" placeholder="Team size" class="form-control" value="<%= @course.team_size %>">
+    </div>
+  </div>
+
+  <!-- Label and input for section_id -->
+  <div class="form-group">
+    <label for="section_id" class="col-sm-2 control-label">
+      Section
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="section_id" name="section_id" placeholder="Section" class="form-control" value="<%= @course.section_id %>">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <input type="submit" value="Create Course" class="btn btn-primary">
+    </div>
+  </div>
+</form>
