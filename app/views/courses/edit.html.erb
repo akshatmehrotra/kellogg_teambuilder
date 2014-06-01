@@ -12,6 +12,54 @@
 <% end %>
 
 <form action="/update_course/<%= @course.id %>" class="form-horizontal">
+
+  <!-- Label and input for quarter_id -->
+  <div class="form-group">
+    <label for="quarter_id" class="col-sm-2 control-label">
+      Quarter
+    </label>
+    <div class="col-sm-10">
+      <select type="integer" id="quarter_id" name="quarter_id" placeholder="Quarter" class="form-control">
+    <% quarters = Quarter.all %>
+    <% quarters.each do |qtr| %>
+      <option value="<%= @course.quarter_id = qtr.id %>"<% if qtr.id == @course.quarter_id %>
+          selected
+      <% end %>><%=qtr.term %></option>
+    <% end %>
+  </select>
+      <!-- <input type="text" id="quarter_id" name="quarter_id" placeholder="Quarter" class="form-control" value="<%= @course.quarter_id %>"> -->
+    </div>
+  </div>
+
+  <!-- Label and input for calendar_id -->
+  <div class="form-group">
+    <label for="calendar_id" class="col-sm-2 control-label">
+      Year
+    </label>
+    <div class="col-sm-10">
+      <select type="integer" id="calendar_id" name="calendar_id" placeholder="Year" class="form-control">
+          <% calendars = Calendar.all %>
+          <% calendars.each do |cal| %>
+            <option value="<%= @course.calendar_id = cal.id %>"<% if cal.id == @course.calendar_id %>
+                selected
+            <% end %>><%=cal.year %></option>
+          <% end %>
+        </select>
+    <!--   <input type="text" id="calendar_id" name="calendar_id" placeholder="Calendar" class="form-control" value="<%= @course.calendar_id %>"> -->
+    </div>
+  </div>
+
+  <!-- Label and input for department_id -->
+  <div class="form-group">
+    <label for="department_id" class="col-sm-2 control-label">
+      Department
+    </label>
+    <div class="col-sm-10">
+      <input type="text" id="department_id" name="department_id" placeholder="Department" class="form-control" value="<%= @course.department_id %>">
+    </div>
+  </div>
+
+
   <!-- Label and input for name -->
   <div class="form-group">
     <label for="name" class="col-sm-2 control-label">
@@ -32,35 +80,6 @@
     </div>
   </div>
 
-  <!-- Label and input for calendar_id -->
-  <div class="form-group">
-    <label for="calendar_id" class="col-sm-2 control-label">
-      Calendar
-    </label>
-    <div class="col-sm-10">
-      <input type="text" id="calendar_id" name="calendar_id" placeholder="Calendar" class="form-control" value="<%= @course.calendar_id %>">
-    </div>
-  </div>
-
-  <!-- Label and input for quarter_id -->
-  <div class="form-group">
-    <label for="quarter_id" class="col-sm-2 control-label">
-      Quarter
-    </label>
-    <div class="col-sm-10">
-      <input type="text" id="quarter_id" name="quarter_id" placeholder="Quarter" class="form-control" value="<%= @course.quarter_id %>">
-    </div>
-  </div>
-
-  <!-- Label and input for department_id -->
-  <div class="form-group">
-    <label for="department_id" class="col-sm-2 control-label">
-      Department
-    </label>
-    <div class="col-sm-10">
-      <input type="text" id="department_id" name="department_id" placeholder="Department" class="form-control" value="<%= @course.department_id %>">
-    </div>
-  </div>
 
   <!-- Label and input for team_size -->
   <div class="form-group">

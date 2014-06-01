@@ -113,11 +113,11 @@ puts "There are now #{Section.count} sections in the database."
 Course.destroy_all
 # name:string instructor:string calendar_id:integer quarter_id:integer department_id:integer team_size:integer section_id:integer
 courses = [
-  { :name => 925, :intructor => "Raghu Betina", :calendar_id => 1, :quarter_id => 3, :department_id => 6,:team_size => 2, :section_id => 1},
-  { :name => 450, :intructor => "Sudhakar Deshmukh", :calendar_id => 1, :quarter_id => 3, :department_id => 15,:team_size => 3, :section_id => 4},
-  { :name => 441, :intructor => "Brian Melzer", :calendar_id => 1, :quarter_id => 3, :department_id => 4,:team_size => 5, :section_id => 3},
-  { :name => 466, :intructor => "Timothy Calkins", :calendar_id => 1, :quarter_id => 3, :department_id => 14,:team_size => 4, :section_id => 5},
-  { :name => 953, :intructor => "Song Yao", :calendar_id => 1, :quarter_id => 3, :department_id => 14,:team_size => 5, :section_id => 1},
+  { :name => 925, :instructor => "Raghu Betina", :calendar_id => 1, :quarter_id => 3, :department_id => 6,:team_size => 2, :section_id => 1},
+  { :name => 450, :instructor => "Sudhakar Deshmukh", :calendar_id => 1, :quarter_id => 3, :department_id => 15,:team_size => 3, :section_id => 4},
+  { :name => 441, :instructor => "Brian Melzer", :calendar_id => 1, :quarter_id => 3, :department_id => 4,:team_size => 5, :section_id => 3},
+  { :name => 466, :instructor => "Timothy Calkins", :calendar_id => 1, :quarter_id => 3, :department_id => 14,:team_size => 4, :section_id => 5},
+  { :name => 953, :instructor => "Song Yao", :calendar_id => 1, :quarter_id => 3, :department_id => 14,:team_size => 5, :section_id => 1},
 ]
 
 courses.each do |course|
@@ -133,4 +133,22 @@ courses.each do |course|
 end
 
 puts "There are now #{Course.count} courses in the database."
+
+Student.destroy_all
+
+students = [
+  {:email => "raghu@example.com", :password => "colts123", :password_confirmation => "colts123"},
+  {:email => "roneesh@example.com", :password => "lions123", :password_confirmation => "lions123"},
+  {:email => "akshat@example.com", :password => "bears123", :password_confirmation => "bears123"},
+]
+
+students.each do |student|
+  s = Student.new
+  s.email = student[:email]
+  s.password = student[:password]
+  s.password_confirmation = student[:password_confirmation]
+  s.save
+end
+
+puts "There are now #{Student.count} students in the database."
 

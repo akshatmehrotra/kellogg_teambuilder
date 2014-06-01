@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :students
+  root 'courses#index'
+
   # Routes for the Membership resource:
   # CREATE
   get('/memberships/new', { :controller => 'memberships', :action => 'new' })
