@@ -27,7 +27,12 @@
   <% @course.students.each do |student| %>
     <tr>
       <td><img src="<%= student.avatar_url %>" width="40"></td>
-      <td></td>
+      <% if student.name.present? %>
+        <td><%= student.name %></td>
+      <% else %>
+        <td></td>
+      <% end %>
+
       <% if student.program_id.present? %>
         <td><%= student.program.name %></td>
       <% else %>

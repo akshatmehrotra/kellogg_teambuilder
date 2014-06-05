@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140601015342) do
+ActiveRecord::Schema.define(version: 20140605163138) do
 
   create_table "calendars", force: true do |t|
     t.integer  "year"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20140601015342) do
     t.integer  "program_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "students", ["email"], name: "index_students_on_email", unique: true
