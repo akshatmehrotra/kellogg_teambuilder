@@ -41,22 +41,24 @@
         <li><a href="/memberships">Memberships</a></li>
         <li><a href="/enrolments">Enrolments</a></li>
         <li><a href="/teams">Teams</a></li>
-        <li><a href="/departments">Departments</a></li>
+        <!-- <li><a href="/departments">Departments</a></li> -->
         <li><a href="/courses">Courses</a></li>
-        <li><a href="/sections">Sections</a></li>
-        <li><a href="/programs">Programs</a></li>
-        <li><a href="/quarters">Quarters</a></li>
-        <li><a href="/calendars">Calendars</a></li>
+        <li><a href="/my_courses">My Courses</a></li>
+        <li><a href="/my_teams">My Teams</a></li>
+        <!-- <li><a href="/sections">Sections</a></li> -->
+        <!-- <li><a href="/programs">Programs</a></li> -->
+        <!-- <li><a href="/quarters">Quarters</a></li> -->
+        <!-- <li><a href="/calendars">Calendars</a></li> -->
         <li><a href="#">About</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <% if false %>
-          <li><a href="/users/edit">Oscar the Grouch</a></li>
-          <li><a href="/users/sign_out" data-method="delete">Sign out</a></li>
+        <% if current_student.present? %>
+          <li><a href="/students/edit"><%= current_student.email %></a></li>
+          <li><a href="/students/sign_out" data-method="delete">Sign out</a></li>
         <% else %>
-          <li><a href="/users/sign_up">Sign up</a></li>
-          <li><a href="/users/sign_in">Sign in</a></li>
+          <li><a href="/students/sign_up">Sign up</a></li>
+          <li><a href="/students/sign_in">Sign in</a></li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

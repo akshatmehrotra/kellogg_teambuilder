@@ -1,6 +1,14 @@
 class TeamsController < ApplicationController
+  def my_teams
+    @teams = current_student.teams
+  end
+
   def index
     @teams = Team.all
+  end
+
+  def class_team
+    @teams = Team.where(:course_id=>params[:course_id])
   end
 
   def show

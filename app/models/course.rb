@@ -9,6 +9,11 @@ class Course < ActiveRecord::Base
   belongs_to :section
   has_many :enrolments
   has_many(:students, { :through => :enrolments })
-  has_many(:teams, {:through => :memberships})
+  # has_many(:teams, {:through => :students})
+
+  def full_title
+    return "#{quarter.term.capitalize} #{calendar.year.to_s} #{department.name} #{name}-#{section.number.to_s}"
+  end
+
 
 end

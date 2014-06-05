@@ -1,27 +1,46 @@
 <div class="page-header">
-  <h1>Course #<%= @course.id %></h1>
+  <h1>Course: <%= @course.quarter.term.capitalize %> <%= @course.calendar.year %> <%= @course.department.name %> <%= @course.name %>-<%= @course.section.number %> </h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt>Quarter</dt>
-  <dd><%= @course.quarter.term.capitalize %></dd>
-
-  <dt>Year</dt>
-  <dd><%= @course.calendar.year %></dd>
-
-  <dt>Department</dt>
-  <dd><%= @course.department.name %></dd>
-
-  <dt>Name</dt>
-  <dd><%= @course.name %></dd>
-
-  <dt>Section</dt>
-  <dd><%= @course.section.number %></dd>
-
   <dt>Instructor</dt>
   <dd><%= @course.instructor %></dd>
 
   <dt>Maximum Team Size </dt>
   <dd><%= @course.team_size %></dd>
 
+  <dt>Total Teams</dt>
+  <dd><%= @course.teams.count %></dd>
 </dl>
+ <p><a href="/teams/class_team/<%= @course.id %>" class="btn btn-primary">Find a Team</a>
+ <a href="/teams/new" class="btn btn-primary">Create a Team</a></p>
+
+
+<table class="table table-striped tabe-hover">
+  <tr>
+    <th>Image</th>
+    <th>Name </th>
+    <th>Program </th>
+    <th>Student Email</th>
+    <th>Team Name</th>
+  </tr>
+  <% @course.students.each do |student| %>
+    <tr>
+      <td><img src="<%= student.avatar_url %>" width="40"></td>
+      <td></td>
+      <% if student.program_id.present? %>
+        <td><%= student.program.name %></td>
+      <% else %>
+        <td></td>
+      <% end %>
+
+      <td><%= student.email %></td>
+      <% student.teams.each do |team| %>
+        <% if team.course_id == @course.id %>
+          <td><%= team.name %></td>
+        <% end %>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+

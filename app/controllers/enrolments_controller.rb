@@ -17,7 +17,7 @@ class EnrolmentsController < ApplicationController
     @enrolment.course_id = params[:course_id]
 
     if @enrolment.save
-      redirect_to "/enrolments", :notice => "Enrolment created successfully."
+      redirect_to "/courses/#{@enrolment.course_id}", :notice => "Enrolment created successfully."
     else
       render 'new'
     end

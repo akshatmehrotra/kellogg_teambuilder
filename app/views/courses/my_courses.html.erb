@@ -1,0 +1,39 @@
+<div class="page-header">
+   <h1>My Courses</h1>
+ </div>
+
+ <p><a href="/enrolments/new" class="btn btn-primary">Enroll in a Course</a></p>
+
+ <table class="table table-hover">
+   <thead>
+     <tr>
+       <th>Name</th>
+       <th></th>
+       <th></th>
+       <th></th>
+     </tr>
+   </thead>
+
+   <tbody>
+     <% @courses.each do |course| %>
+       <tr>
+         <td><%= course.quarter.term.titleize %> <%= course.calendar.year.to_s %> <%= course.department.name %><%= course.name %>-<%= course.section.number.to_s %></td>
+         <td>
+           <a href="/courses/<%= course.id %>" class="btn btn-primary">
+             <i class="fa fa-search-plus"></i>
+           </a>
+         </td>
+         <td>
+           <a href="/courses/<%= course.id %>/edit" class="btn btn-warning">
+             <i class="fa fa-edit"></i>
+           </a>
+         </td>
+         <td>
+           <a href="/delete_course/<%= course.id %>" class="btn btn-danger">
+             <i class="fa fa-trash-o"></i>
+           </a>
+         </td>
+       </tr>
+     <% end %>
+   </tbody>
+ </table>

@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Add Course</h1>
+  <h1>Add A New Course</h1>
 </div>
 
 <% if @course.errors.any? %>
@@ -19,16 +19,7 @@
       Quarter
     </label>
     <div class="col-sm-10">
-
-      <select type="integer" id="quarter_id" name="quarter_id" placeholder="Quarter" class="form-control">
-        <% quarters = Quarter.all %>
-        <% quarters.each do |quarter| %>
-          <option value="<%= @course.quarter_id = quarter.id %>"><%=quarter.term.capitalize %></option>
-        <% end %>
-      </select>
-
-
-<!--       <input type="text" id="quarter_id" name="quarter_id" placeholder="Quarter" class="form-control" value="<%= @course.quarter_id %>"> -->
+      <%= select_tag(:quarter_id, options_from_collection_for_select(Quarter.all, :id, :term, @course.quarter_id)) %>
     </div>
   </div>
 
@@ -38,15 +29,7 @@
       Year
     </label>
     <div class="col-sm-10">
-
-      <select type="integer" id="calendar_id" name="calendar_id" placeholder="Year" class="form-control">
-        <% calendars = Calendar.all %>
-        <% calendars.each do |cal| %>
-          <option value="<%= @course.calendar_id = cal.id %>"><%=cal.year %></option>
-        <% end %>
-      </select>
-
-      <!-- <input type="text" id="calendar_id" name="calendar_id" placeholder="Calendar" class="form-control" value="<%= @course.calendar_id %>"> -->
+      <%= select_tag(:calendar_id, options_from_collection_for_select(Calendar.all, :id, :year, @course.calendar_id)) %>
     </div>
   </div>
 
@@ -56,13 +39,7 @@
       Department
     </label>
     <div class="col-sm-10">
-      <select type="integer" id="department_id" name="department_id" placeholder="Department" class="form-control">
-        <% departments = Department.all %>
-        <% departments.each do |dept| %>
-          <option value="<%= @course.department_id = dept.id %>"><%=dept.name %></option>
-      <% end %>
-    </select>
-   <!--    <input type="text" id="department_id" name="department_id" placeholder="Department" class="form-control" value="<%= @course.department_id %>"> -->
+      <%= select_tag(:department_id, options_from_collection_for_select(Department.all, :id, :name, @course.department_id)) %>
     </div>
   </div>
 
@@ -82,13 +59,7 @@
       Section
     </label>
     <div class="col-sm-10">
-      <select type="integer" id="section_id" name="section_id" placeholder="Section" class="form-control">
-        <% sections = Section.all %>
-        <% sections.each do |sec| %>
-          <option value="<%= @course.section_id = sec.id %>"><%=sec.number %></option>
-      <% end %>
-    </select>
-   <!-- <input type="text" id="section_id" name="section_id" placeholder="Section" class="form-control" value="<%= @course.section_id %>"> -->
+      <%= select_tag(:section_id, options_from_collection_for_select(Section.all, :id, :number, @course.section_id)) %>
     </div>
   </div>
 

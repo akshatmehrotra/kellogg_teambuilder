@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   # READ
   get('/teams', { :controller => 'teams', :action => 'index' })
   get('/teams/:id', { :controller => 'teams', :action => 'show' })
+  get('/teams/class_team/:course_id', { :controller => 'teams', :action => 'class_team' })
 
   # UPDATE
   get('/teams/:id/edit', { :controller => 'teams', :action => 'edit' })
@@ -51,6 +52,9 @@ Rails.application.routes.draw do
 
   # DELETE
   get('/delete_team/:id', { :controller => 'teams', :action => 'destroy' })
+
+  # MY_TEAMS
+  get('/my_teams', { :controller => 'teams', :action => 'my_teams' })
   #------------------------------
 
   # Routes for the Department resource:
@@ -85,6 +89,9 @@ Rails.application.routes.draw do
 
   # DELETE
   get('/delete_course/:id', { :controller => 'courses', :action => 'destroy' })
+
+  # MY_COURSES
+  get('/my_courses', { :controller => 'courses', :action => 'my_courses' })
   #------------------------------
 
   # Routes for the Section resource:

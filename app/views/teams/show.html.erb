@@ -1,12 +1,26 @@
 <div class="page-header">
-  <h1>Team #<%= @team.id %></h1>
+  <h1>Team <%= @team.name.titleize %></h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt>Name</dt>
-  <dd><%= @team.name %></dd>
 
   <dt>Course</dt>
-  <dd><%= @team.course_id %></dd>
-
+  <!-- <dd><%= @team.course_id %></dd> -->
+  <% course = Course.find(@team.course_id) %>
+  <dd><%= course.quarter.term.capitalize %> <%= course.calendar.year %> <%= course.department.name %> <%= course.name %>-<%= course.section.number %></dd>
+  <dt>Team Size</dt>
+  <dd><%= @team.students.count %></dd>
 </dl>
+
+<table class="table table-hover">
+  <tr>
+    <th>Student Name</th>
+    <th>Student Email</th>
+  </tr>
+  <% @team.students.each do |student| %>
+    <tr>
+      <td><%= student.avatar_url %></td>
+      <td><%= student.email %></td>
+    </tr>
+  <% end %>
+</table>
