@@ -4,7 +4,7 @@
 
 <p><a href="/teams/new" class="btn btn-primary">Create A New Team</a></p>
 
- <p><a href="/memberships/new" class="btn btn-primary">Join an Existing Team</a></p>
+ <p><a href="/memberships/new?course_id=<%= @teams.first.course.id %>" class="btn btn-primary">Join an Existing Team</a></p>
 
 <table class="table table-hover">
   <thead>

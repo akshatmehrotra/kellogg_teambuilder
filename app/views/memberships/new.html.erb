@@ -29,7 +29,7 @@
       Team
     </label>
     <div class="col-sm-10">
-      <%= select_tag(:team_id, options_from_collection_for_select(Team.all, :id, :name)) %>
+      <%= select_tag(:team_id, options_from_collection_for_select(@teams, :id, :name)) %>
 
 <!--       <input type="text" id="team_id" name="team_id" placeholder="Team" class="form-control" value="<%= @membership.team_id %>"> -->
     </div>

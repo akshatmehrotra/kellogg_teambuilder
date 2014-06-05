@@ -8,7 +8,14 @@ class MembershipsController < ApplicationController
   end
 
   def new
+    if params[:course_id].present?
+      @teams = Course.find(params[:course_id]).teams
+    else
+      @teams = Team.all
+    end
+
     @membership = Membership.new
+
   end
 
   def create
@@ -39,7 +46,7 @@ class MembershipsController < ApplicationController
         end
       end
     else
-      redirect_to '/my_teams', :notice => "You are not enroled in this course"
+      redirect_to '/my_courses', :notice => "You are not enroled in this course"
     end
   end
 
