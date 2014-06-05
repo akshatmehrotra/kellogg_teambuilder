@@ -15,12 +15,31 @@ class EnrolmentsController < ApplicationController
     @enrolment = Enrolment.new
     @enrolment.student_id = params[:student_id]
     @enrolment.course_id = params[:course_id]
+    #original code
+    # if @enrolment.save
+    #   redirect_to "/courses/#{@enrolment.course_id}", :notice => "Enrolment created successfully."
+    # else
+    #   render 'new'
+    # end
+    #test code
+    course_in_question = Course.find(@enrolment.course_id)
+    student_in_question = Student.find(@enrolment.student_id)
 
-    if @enrolment.save
-      redirect_to "/courses/#{@enrolment.course_id}", :notice => "Enrolment created successfully."
+    if student_in_question.courses.include?(course_in_question)
+      redirect_to '/my_courses', :notice => "You are already enrolled in this class"
     else
-      render 'new'
+      if @enrolment.save
+        redirect_to "/my_courses", :notice => "You were successfully enrolled successfully."
+      else
+        # redirect_to "/teams"
+        render 'new'
+      end
     end
+
+
+
+
+
   end
 
   def edit

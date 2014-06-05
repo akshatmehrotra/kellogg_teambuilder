@@ -38,13 +38,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/memberships">Memberships</a></li>
-        <li><a href="/enrolments">Enrolments</a></li>
-        <li><a href="/teams">Teams</a></li>
-        <!-- <li><a href="/departments">Departments</a></li> -->
-        <li><a href="/courses">Courses</a></li>
         <li><a href="/my_courses">My Courses</a></li>
         <li><a href="/my_teams">My Teams</a></li>
+       <!--  <li><a href="/memberships">Memberships</a></li> -->
+        <!-- <li><a href="/enrolments">Enrolments</a></li> -->
+        <!-- <li><a href="/departments">Departments</a></li> -->
+        <li><a href="/courses">All Courses</a></li>
+        <li><a href="/teams">All Teams</a></li>
         <!-- <li><a href="/sections">Sections</a></li> -->
         <!-- <li><a href="/programs">Programs</a></li> -->
         <!-- <li><a href="/quarters">Quarters</a></li> -->
@@ -54,7 +54,14 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% if current_student.present? %>
-          <li><a href="/students/edit"><%= current_student.email %></a></li>
+          <% if current_student.avatar_url.present? %>
+            <li><img src="<%= current_student.avatar_url %>" class="img-circle" width="60" height="60"></li>
+          <% end %>
+          <% if current_student.name.present? %>
+            <li><a href="/students/edit"><%= current_student.name %></a></li>
+            <% else %>
+              <li><a href="/students/edit"><%= current_student.email %></a></li>
+          <% end %>
           <li><a href="/students/sign_out" data-method="delete">Sign out</a></li>
         <% else %>
           <li><a href="/students/sign_up">Sign up</a></li>

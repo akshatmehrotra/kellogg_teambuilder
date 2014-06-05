@@ -5,7 +5,7 @@ class Student < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :program
 
-  has_many :memberships
+  has_many :memberships, :dependent => :destroy
   has_many(:teams, { :through => :memberships })
 
 

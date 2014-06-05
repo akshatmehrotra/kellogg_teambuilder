@@ -6,6 +6,9 @@
   <dt>Instructor</dt>
   <dd><%= @course.instructor %></dd>
 
+  <dt>Students Enroled</dt>
+  <dd><%= @course.students.count %></dd>
+
   <dt>Maximum Team Size </dt>
   <dd><%= @course.team_size %></dd>
 
@@ -26,7 +29,7 @@
   </tr>
   <% @course.students.each do |student| %>
     <tr>
-      <td><img src="<%= student.avatar_url %>" width="40"></td>
+      <td><img src="<%= student.avatar_url %>" class="img-circle" width="60" height="60"></td>
       <% if student.name.present? %>
         <td><%= student.name %></td>
       <% else %>
@@ -40,10 +43,15 @@
       <% end %>
 
       <td><%= student.email %></td>
-      <% student.teams.each do |team| %>
-        <% if team.course_id == @course.id %>
-          <td><%= team.name %></td>
+      <% if student.teams.find_by(:course_id => @course.id).present? %>
+
+        <% student.teams.each do |team| %>
+          <% if team.course_id == @course.id %>
+            <td><%= team.name %></td>
+          <% end %>
         <% end %>
+        <% else %>
+          <td></td>
       <% end %>
     </tr>
   <% end %>
